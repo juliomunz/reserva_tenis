@@ -5,28 +5,18 @@ import {
   Route,
   Link} from "react-router-dom";
 import Login from './views/Login';
-import Dashboard from './views/Dashboard';
+import ReservarCancha from './views/BookCourt';
 import HomeCourt from './views/HomeCourt';
+import DetalleCancha from './views/DetailsCourt'
 
 function App() {
+  
   return (
     <div className="App">
       <Router>
       <div>
         <div className="nav-bar">
           <ul>
-            {/* <li>
-              <Link to="/">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/new"></Link>
-            </li>
-            <li>
-              <Link to="/details/:id"></Link>
-            </li> */}
-            <li>
-              <Link to="/canchauno">Dashboard</Link>
-            </li>
             <li>
               <Link to="/home">Home</Link>
             </li>
@@ -36,25 +26,17 @@ function App() {
           </ul>
         </div>        
           <Switch>         
-          {/* <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/">
-            <xx/>
-          </Route>
-          <Route exact path="">
-            <xx/>
-          </Route>
-          <Route exact path="">
-            <xx/> */}
             <Route exact path="/login">
               <Login/>
             </Route>
             <Route exact path="/home">
               <HomeCourt/>
             </Route>
-            <Route exact path="/canchas/:id">
-              <Dashboard/>
+            <Route exact path="/detallecancha/:id">
+              <DetalleCancha/>
+            </Route>
+            <Route exact path="/cancha/:id">
+              <ReservarCancha/>
             </Route>
           </Switch>
         </div>

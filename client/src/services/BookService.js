@@ -46,15 +46,15 @@ export default class BookService {
         }
     }
 
-    // async getOneSingleCourt(id) {
-    //     try {
-    //         console.log(id)
-    //         const reserva = await axios.get(`http://localhost:8000/api/reservas/${id}`)
-    //         return reserva.data.reserva;
-    //     } catch(err) {
-    //         return err;
-    //     }
-    // };
+    async getOneSigleCancha(id) {
+        try {
+            //console.log(id)
+            const cancha = await axios.get(`http://localhost:8000/api/cancha/${id}`)
+            return cancha.data.cancha;
+        } catch(err) {
+            return err;
+        }
+    };
 
     async updateCancha(id, cancha) {
         try {

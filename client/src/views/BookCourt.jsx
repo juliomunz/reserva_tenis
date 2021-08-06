@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import logo from '../assets/tennis_clay.png';
 import {Form, Button} from 'react-bootstrap';
 import BookService from '../services/BookService'
@@ -7,7 +7,7 @@ import axios from 'axios';
 import * as moment from 'moment';
 
 
-const Dashboard = () => {
+const ReservarCancha = () => {
     const history = useHistory()
     const bookService = new BookService();
     const { id } = useParams();
@@ -18,16 +18,14 @@ const Dashboard = () => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-    }
         if (id) {
-        //console.log (courtForm)
         bookService.updateCancha(id, courtForm);
         //history.push("/");
         } else {
             axios.post('http://localhost:8000/api/reserva/new', courtForm)
-        
             .then(() => history.push("/Home"))
             .catch(err => console.log(err))
+        }
     }
 
     return (
@@ -43,7 +41,7 @@ const Dashboard = () => {
                 <img src={logo} alt="Logo" />
             <Form onSubmit={onSubmitHandler}>
                 <div className="container-option">
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Group>
                     <Form.Label>Selecciona el día</Form.Label>
                     <Form.Control id="fecha "name="fecha" type="date" value={courtForm.fecha} onChange={(e) => setCourtForm({ ...courtForm, [e.target.name]: e.target.value })} />
                 </Form.Group>
@@ -66,4 +64,4 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard
+export default ReservarCancha
