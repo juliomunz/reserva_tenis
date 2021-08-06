@@ -34,14 +34,14 @@ module.exports.updateCancha = (req,res) => {
 
 module.exports.getAllCourts = (req, res) => {
     Reservas.find()
-    .then(allCourts => res.json({canchas: allCourts}))
+    .then(canchasList => res.json({canchas: canchasList}))
     .catch(err => res.json({canchas: null}));
 }
 
 module.exports.getCanchaByID = (req, res) => {
     Cancha.findById(req.params.id)
-    .then(singleCancha => res.json({canchaData: singleCancha}))
-    .catch(error => res.json({canchaData: null}));
+    .then(singleCancha => res.json({cancha: singleCancha}))
+    .catch(error => res.json({cancha: null}));
 }
 
 module.exports.deleteExistingCourt = (req, res) => {
